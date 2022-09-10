@@ -16,4 +16,3 @@ class MaliciousIpsHandler(object):
             if ip_address in provider.get_malicious_ips_list():
                 return True
         return False
-
