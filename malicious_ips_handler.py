@@ -8,7 +8,7 @@ class MaliciousIpsHandler(object):
     def __init__(self):
         self.providers = [
             TorExitNodes(),
-            # FeodoTracker()
+            FeodoTracker()
         ]
 
     def is_malicious(self, ip_address):

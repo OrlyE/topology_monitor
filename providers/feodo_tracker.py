@@ -1,8 +1,5 @@
-from utils.logger import get_logger
 from utils.ssh_connection import call_api
 import json
-
-logger = get_logger(stream=True)
 
 
 class FeodoTracker(object):
@@ -12,7 +9,7 @@ class FeodoTracker(object):
         url = "https://feodotracker.abuse.ch/downloads/ipblocklist_recommended.json"
 
         response = call_api("get",url)
-        logger.info("response  = {resp}".format(resp=response))
+        print("response  = {resp}".format(resp=response))
         if response.status_code != 200:
             raise Exception("Failed to get malicious ips data from {}. Status code return {}".format(url,
                                                                                                      str(
