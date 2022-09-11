@@ -7,5 +7,6 @@ class TestMaliciousIpsHandler(TestCase):
 
     def test_is_malicious(self):
         handler = MaliciousIpsHandler()
-        handler.is_malicious(144)
-        self.fail()
+        is_malicious = handler.validate(144)
+        if is_malicious:
+            self.fail()

@@ -1,6 +1,9 @@
 from typing import Iterable
 from topologies_generation.topology_generator import create_topologies_datasource
 from malicious_ips_handler import MaliciousIpsHandler
+from utils.logger import Logger
+
+logger = Logger.get_logger(__name__, log_level="INFO")
 
 
 class TopologyHandler:
@@ -11,8 +14,8 @@ class TopologyHandler:
     def _handle_topology(self, topology: dict):
         ip_address = topology["destination_ip"]
 
-        if self._malicious_ips_handler.is_malicious(ip_address):
-            print("Found malicious ip: {}".format(ip_address))
+        if self._malicious_ips_handler.validate(ip_address):
+            logger.warn("Found malicious ip: {}".format(ip_address))
 
     @staticmethod
     def _validate_topology(topology: dict) -> bool:
@@ -24,9 +27,9 @@ class TopologyHandler:
                                self._validate_topology(topology))
 
         for topology in filtered_topologies:
-            print("Handling topology.")
+            logger.info("Handling topology.")
             self._handle_topology(topology)
-            print("Done handling topology.")
+            logger.info("Done handling topology.")
 
 
 

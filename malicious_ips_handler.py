@@ -11,7 +11,7 @@ class MaliciousIpsHandler(object):
             FeodoTracker()
         ]
 
-    def is_malicious(self, ip_address):
+    def validate(self, ip_address):
         for provider in self.providers:
             if ip_address in provider.get_malicious_ips_list():
                 return True
