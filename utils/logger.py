@@ -46,8 +46,7 @@ class Logger(object):
         return logger
 
 
-def get_file_handler():
-    default_path = "./loggi.log"
+def get_file_handler(default_path = "./loggi.log"):
     max_bytes = 100 * 1024 * 1024  # 100MB
     backup_rolling_files = 3
 
