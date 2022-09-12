@@ -15,7 +15,7 @@ def call_api(method, url, timeout=30, payload=None, headers=None):
 
         return response
     except requests.exceptions.HTTPError as err:
-        message = "Error occurred while calling drift-empty schema: {url}. " \
+        message = "Error occurred while calling: {url}. " \
                   "Error: {e}".format(url=url, e=err)
         raise requests.exceptions.HTTPError(message)
 
